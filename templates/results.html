@@ -8,5 +8,11 @@
     this page.
 </p>
 
+{%if 'mood' in session %}
+      mood = session['mood']
+      print(mood)
+{% endif %}
+
+
 
 {% endblock %}

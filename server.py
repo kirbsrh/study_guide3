@@ -5,7 +5,8 @@ app.secret_key = "blahhhhhhhh"
 
 @app.route('/')
 def show_homepage():
-    return render_template('homepage.html')
+
+        return render_template('homepage.html')
 
 ###############################
 #                             #
@@ -14,13 +15,27 @@ def show_homepage():
 ###############################
 
 
-@app.route('/form')
+@app.route('/form', methods=['POST'])
 def show_form():
-    pass
+
+    session['mood'] = request.form("mood")
+    mood = session['mood']
+    
+    return render_template('form.html', mood = mood)
 
 @app.route('/results')
 def show_results():
-    pass
+
+   
+   return render_template('results.html')
+
+@app.route('/save-name')
+def save_name():
+    session['name'] = request.args.get("name")
+
+    
+    return render_template('form.html')
+
 
 
 if __name__ == "__main__":
